@@ -20,7 +20,7 @@ module.exports = {
       }
     }
     let user = req.body;
-    let result = await UserServ.add(user, req.currUser);
+    let result = await lessonServ.save(user, req.currUser);
     utils.sendResponse(result, req, res);
   },
 
@@ -42,7 +42,7 @@ module.exports = {
       }
     }
     let user = req.body;
-    let result = await UserServ.add(user, req.currUser);
+    let result = await lessonServ.edit(user, req.currUser);
     utils.sendResponse(result, req, res);
   },
 

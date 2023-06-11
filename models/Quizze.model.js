@@ -6,9 +6,6 @@ let QuizzeSchema = new Schema({
   title: {
     type: String,
   },
-  quizze_type: {
-    type: String,
-  },
   description: {
     type: String,
   },
@@ -23,18 +20,6 @@ let QuizzeSchema = new Schema({
   },
   total_duration: {
     type: String,
-  },
-  is_preview: {
-    type: Boolean,
-    default: false,
-  },
-  is_publish: {
-    type: Boolean,
-    default: false,
-  },
-  allowed_multiple_time: {
-    type: Boolean,
-    default: false,
   },
   lesson_id: {
     type: Schema.Types.ObjectId,
@@ -51,25 +36,13 @@ let QuizzeSchema = new Schema({
       question: {
         type: String,
       },
-      question_type: {
-        type: String,
-      },
       answer_type: {
         type: String,
-      },
-      file_path: {
-        type: String,
-      },
-      Sequence: {
-        type: Number,
       },
       option: {
         type: [],
       },
       correct_answers: {
-        type: Array,
-      },
-      given_options: {
         type: Array,
       },
       hint: {

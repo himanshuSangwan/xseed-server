@@ -1,17 +1,27 @@
 const QuizzeResult = require("../models/QuizzeResult.model");
 
 module.exports = {
-  save: async function (quizzeresultObj) {
+  save: async function (quizzeresultObj, currUser) {
     let result = {};
+    quizzeresultObj.userId = currUser._id;
     try {
-      result.data = await new QuizzeResult(quizzeresultObj).save();
+      let oldData = await QuizzeResult.findOne({ userId: currUser._id, quizzeId: quizzeresultObj.quizzeId });
+      if (oldData) {
+        result.data = await QuizzeResult.updateOne(
+          { userId: currUser._id, quizzeId: quizzeresultObj.quizzeId },
+          { $set: quizzeresultObj }
+        );
+      } else {
+        result.data = await new QuizzeResult(quizzeresultObj).save();
+      }
     } catch (err) {
       result.err = err.message;
     }
     return result;
   },
-  edit: async function (body) {
+  edit: async function (body, currUser) {
     let result = {};
+    body.userId = currUser._id;
     try {
       if (body && body._id) {
         result.data = await QuizzeResult.findByIdAndUpdate(body._id, { $set: body }, { new: true });

@@ -4,12 +4,12 @@ const utils = require("../utils/utils");
 module.exports = {
   add: async function (req, res) {
     let faq = req.body;
-    let result = await quizzeresultServ.save(faq);
+    let result = await quizzeresultServ.save(faq, req.currUser);
     utils.sendResponse(result, req, res);
   },
 
   edit: async function (req, res) {
-    let result = await quizzeresultServ.edit(req.body);
+    let result = await quizzeresultServ.edit(req.body, req.currUser);
     utils.sendResponse(result, req, res);
   },
 

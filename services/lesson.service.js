@@ -54,6 +54,20 @@ module.exports = {
       ) {
         condition["is_active"] = lessonObj.filter.is_active;
       }
+      if (
+        lessonObj.filter.subject_id !== undefined &&
+        lessonObj.filter.subject_id !== null &&
+        lessonObj.filter.subject_id != ""
+      ) {
+        condition["subject_id"] = lessonObj.filter.subject_id;
+      }
+      if (
+        lessonObj.filter.class_id !== undefined &&
+        lessonObj.filter.class_id !== null &&
+        lessonObj.filter.class_id != ""
+      ) {
+        condition["class_id"] = lessonObj.filter.class_id;
+      }
     }
     try {
       if (start === undefined || length === undefined) {
