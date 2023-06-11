@@ -7,7 +7,7 @@ require("dotenv").config();
 const cors = require("cors");
 const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://" + process.env.DB_HOST + ":" + process.env.DB_PORT + "/" + process.env.DB_NAME, {
+mongoose.connect("mongodb+srv://xseed:xseed@cluster0.rhyhka7.mongodb.net/" + process.env.DB_NAME, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
