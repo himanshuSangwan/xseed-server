@@ -76,7 +76,6 @@ module.exports = {
       }
       for (let itm of data) {
         // data.forEach(async (itm) => {
-        console.log(currUser);
         if (currUser) {
           itm._doc.quizzeResult = await QuizzeResult.findOne({ sectionId: itm._id, userId: currUser._id });
         }

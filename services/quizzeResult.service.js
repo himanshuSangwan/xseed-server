@@ -7,9 +7,10 @@ module.exports = {
     try {
       let oldData = await QuizzeResult.findOne({ userId: currUser._id, quizzeId: quizzeresultObj.quizzeId });
       if (oldData) {
-        result.data = await QuizzeResult.updateOne(
+        result.data = await QuizzeResult.findOneAndUpdate(
           { userId: currUser._id, quizzeId: quizzeresultObj.quizzeId },
-          { $set: quizzeresultObj }
+          { $set: quizzeresultObj },
+          { new: true }
         );
       } else {
         result.data = await new QuizzeResult(quizzeresultObj).save();
