@@ -74,14 +74,19 @@ module.exports = {
           _id: "asc",
         });
       }
-      data.forEach(async (itm) => {
+      for (let itm of data) {
+        // data.forEach(async (itm) => {
+        console.log(currUser);
         if (currUser) {
           itm._doc.quizzeResult = await QuizzeResult.findOne({ sectionId: itm._id, userId: currUser._id });
         }
-      });
-      data.forEach(async (itm) => {
+        // });
+      }
+      // data.forEach(async (itm) => {
+      for (let itm of data) {
         itm._doc.quizze = await Quizze.findOne({ section_id: itm._id });
-      });
+        // });
+      }
       count = await Section.countDocuments(condition);
       result = {
         data: data,
