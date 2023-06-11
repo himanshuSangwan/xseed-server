@@ -76,13 +76,11 @@ module.exports = {
       }
       data.forEach(async (itm) => {
         if (currUser) {
-          let quizzeReuslt = await QuizzeResult.findOne({ sectionId: itm._id, userId: currUser._id });
-          itm._doc.quizzeResult = quizzeReuslt;
+          itm._doc.quizzeResult = await QuizzeResult.findOne({ sectionId: itm._id, userId: currUser._id });
         }
       });
       data.forEach(async (itm) => {
-        let quizze = await Quizze.findOne({ section_id: itm._id });
-        itm._doc.quizze = quizze;
+        itm._doc.quizze = await Quizze.findOne({ section_id: itm._id });
       });
       count = await Section.countDocuments(condition);
       result = {
