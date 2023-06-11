@@ -56,6 +56,13 @@ module.exports = {
       ) {
         condition["is_active"] = sectionObj.filter.is_active;
       }
+      if (
+        sectionObj.filter.lesson_id !== undefined &&
+        sectionObj.filter.lesson_id !== null &&
+        sectionObj.filter.lesson_id != ""
+      ) {
+        condition["lesson_id"] = sectionObj.filter.lesson_id;
+      }
     }
     try {
       if (start === undefined || length === undefined) {
