@@ -13,7 +13,7 @@ module.exports = {
         randompwd = user.password;
       }
       user.first_name = user.full_name.split(" ")[0];
-      user.last_name = user.full_name.split(" ")[0];
+      user.last_name = user.full_name.split(" ")[1];
       let CheckEmail = await User.find({ email: user.email });
       let checkUserName = await User.find({ user_name: user.user_name });
       if (checkUserName.length === 0) {
